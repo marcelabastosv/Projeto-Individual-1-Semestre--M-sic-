@@ -1,1 +1,1 @@
-# Projeto-Individual-1-Semestre--M-sic-
+# Projeto-Individual-1-Semestre--Masic-
