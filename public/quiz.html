@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico">
+    <title>Másic</title>
+</head>
+
+<body onload="Esconder()">
+    <div id="Quiz">
+        <div class="inicio_quiz" id="inicio">
+            <div class="container_inicio">
+                <h1>SEU CADASTRO FOI CONCLUÍDO</h1>
+                <p>Para começar, faça nosso quiz de personalidade, para saber qual estilo musical que mais combina mais
+                    com você.</p>
+                <button id="btn_Iniciar_Quiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+            </div>
+        </div>
+        <div id="jogo_quiz" class="container_jogo">
+            <div class="superior_quiz">
+                <h2>QUIZ</h2>
+                <ul>
+                    <li>REGGAE</li>
+                    <li>MPB</li>
+                    <li>R&B</li>
+                    <li>K-POP</li>
+                    <li>POP</li>
+                </ul>
+            </div>
+            <div class="container_questao">
+                <div id="infoQuestao" class="qtdQuestao_div">
+                    <span> <span id="nQuestaoAtual"></span> DE <span id="qtdQuestoes"></span> QUESTÕES</span>
+                </div>
+                <div id="pergunta_quiz" class="pergunta_questao">
+                    <span id="spanQuestaoExibida"></span>
+                </div>
+
+                <div id="opcoes" class="alternativas_questao">
+                    <div class="alternativa_qs">
+                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                    </div>
+                    <div class="alternativa_qs">
+                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                    </div>
+                    <div class="alternativa_qs">
+                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                    </div>
+                    <div class="alternativa_qs">
+                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                    </div>
+                    <div class="alternativa_qs">
+                        <input type="radio" id="quintaOpcao" name="option" class="radio" value="alternativaE" />
+                        <label for="quintaOpcao" class="option" id="labelOpcaoCinco"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="resultado_quiz" class="resultado_quiz" style="display: none;">
+            <div class="container_resultado">
+            <h2>RESULTADO DO QUIZ</h2>
+            <p id="mensagem_resultado"></p>
+            <button onclick="window.location.reload()">REFAZER QUIZ</button>
+                <button onclick="pagGenero()">CONHEÇA SOBRE O GÊNERO</button>
+        </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var perguntasResposta = [
+        {
+            pergunta: "Como você prefere passar seu tempo livre?",
+            alternativaA: "Curtindo a natureza e relaxando ao ar livre",
+            alternativaB: "Saindo com amigos e aproveitando festas",
+            alternativaC: "Assistindo vídeos, dançando ou criando conteúdo nas redes",
+            alternativaD: "Refletindo, ouvindo música em casa ou lendo",
+            alternativaE: "Conversando com a família e ouvindo histórias antigas"
+        },
+
+        {
+            pergunta: "Como você se descreveria na maior parte do tempo?",
+            alternativaA: "Tranquilo(a) e de boas, gosto de paz",
+            alternativaB: "Animado(a) e pra cima, tô sempre rindo",
+            alternativaC: "Intenso(a) e cheio(a) de energia, nunca paro",
+            alternativaD: "Reservado(a), mas com emoções fortes por dentro",
+            alternativaE: "Calmo(a), mas com momentos de empolgação"
+        },
+
+        {
+            pergunta: "Qual dessas atividades mais te representa?",
+            alternativaA: "Fazer trilhas ou cuidar de plantas",
+            alternativaB: "Ir a eventos ou conhecer pessoas novas",
+            alternativaC: "Aprender coreografias e seguir tendências",
+            alternativaD: "Escrever, cantar ou desabafar com alguém próximo",
+            alternativaE: "Escutar música antiga e pensar sobre a vida"
+        },
+
+        {
+            pergunta: "Qual dessas roupas você se imagina usando em um show?",
+            alternativaA: "Roupas leves, confortáveis e coloridas",
+            alternativaB: "Algo brilhante e chamativo para dançar muito",
+            alternativaC: "Um look estiloso, moderno e cheio de acessórios",
+            alternativaD: "Um visual elegante e discreto",
+            alternativaE: "Algo casual com um toque artístico"
+        },
+
+        {
+            pergunta: "O que a música significa para você?",
+            alternativaA: "Um caminho para a paz interior",
+            alternativaB: "Energia, movimento e diversão",
+            alternativaC: "Identidade, conexão e estilo de vida",
+            alternativaD: "Emoção, amor e intensidade",
+            alternativaE: "Cultura, memória e expressão do povo"
+        },
+
+        {
+            pergunta: "Qual é a primeira coisa que você repara em uma música nova?",
+            alternativaA: "A vibe relaxante",
+            alternativaB: "O refrão marcante",
+            alternativaC: "A batida e o visual do clipe",
+            alternativaD: "A letra profunda e a melodia",
+            alternativaE: "A mensagem cultural e o arranjo"
+        },
+
+        {
+            pergunta: "Em um karaokê, qual estilo de música você escolheria?",
+            alternativaA: "Algo calmo com mensagem positiva",
+            alternativaB: "Um hit animado que todo mundo canta junto",
+            alternativaC: "Um sucesso coreano dançante",
+            alternativaD: "Uma música romântica e emocionante",
+            alternativaE: "Um clássico brasileiro cheio de sentimento"
+        }
+    ];
+
+    var nQuestaoAtual = 0;
+    var qtdQuestoes = perguntasResposta.length;
+    var reggae = 0;
+    var pop = 0;
+    var kpop = 0;
+    var rEb = 0;
+    var mpb = 0;
+    var estilo = "";
+
+    function Esconder() {
+        document.getElementById('jogo_quiz').style.display = "none";
+    }
+
+    function iniciarQuiz() {
+        document.getElementById('jogo_quiz').style.display = "flex";
+        document.getElementById('inicio').style.display = "none";
+        document.getElementById('qtdQuestoes').innerHTML = qtdQuestoes;
+        mostrarQuestao();
+    }
+
+    function mostrarQuestao() {
+        habilitarBotoes();
+
+        var questao = perguntasResposta[nQuestaoAtual];
+        document.getElementById("nQuestaoAtual").innerHTML = nQuestaoAtual + 1;
+        document.getElementById("spanQuestaoExibida").innerHTML = questao.pergunta;
+
+        document.getElementById("labelOpcaoUm").innerHTML = questao.alternativaA;
+        document.getElementById("labelOpcaoDois").innerHTML = questao.alternativaB;
+        document.getElementById("labelOpcaoTres").innerHTML = questao.alternativaC;
+        document.getElementById("labelOpcaoQuatro").innerHTML = questao.alternativaD;
+        document.getElementById("labelOpcaoCinco").innerHTML = questao.alternativaE;
+
+        document.getElementById("primeiraOpcao").onclick = btn_reggae;
+        document.getElementById("segundaOpcao").onclick = btn_pop;
+        document.getElementById("terceiraOpcao").onclick = btn_kpop;
+        document.getElementById("quartaOpcao").onclick = btn_reb;
+        document.getElementById("quintaOpcao").onclick = btn_mpb;
+    }
+
+    function habilitarBotoes() {
+        primeiraOpcao.disabled = false;
+        segundaOpcao.disabled = false;
+        terceiraOpcao.disabled = false;
+        quartaOpcao.disabled = false;
+        quintaOpcao.disabled = false;
+    }
+
+    function desabilitarBotoes() {
+        primeiraOpcao.disabled = true;
+        segundaOpcao.disabled = true;
+        terceiraOpcao.disabled = true;
+        quartaOpcao.disabled = true;
+        quintaOpcao.disabled = true;
+    }
+
+    function proximaOuResultado() {
+        if (nQuestaoAtual < qtdQuestoes - 1) {
+            nQuestaoAtual++;
+            mostrarQuestao();
+        } else {
+            mostrarResultado();
+        }
+    }
+
+    function btn_reggae() {
+        reggae++;
+        proximaOuResultado();
+    }
+
+    function btn_pop() {
+        pop++;
+        proximaOuResultado();
+    }
+
+    function btn_kpop() {
+        kpop++;
+        proximaOuResultado();
+    }
+
+    function btn_reb() {
+        rEb++;
+        proximaOuResultado();
+    }
+
+    function btn_mpb() {
+        mpb++;
+        proximaOuResultado();
+    }
+
+    function mostrarResultado() {
+        var pontos = [reggae, pop, kpop, rEb, mpb];
+        var maior = Math.max(...pontos);
+
+        if (maior == reggae) estilo = "Reggae";
+        else if (maior == pop) estilo = "Pop";
+        else if (maior == kpop) estilo = "K-POP";
+        else if (maior == rEb) estilo = "R&B";
+        else estilo = "MPB";
+
+        document.getElementById("jogo_quiz").style.display = "none";
+        document.getElementById("resultado_quiz").style.display = "block";
+        document.getElementById("mensagem_resultado").innerHTML = `O estilo musical que mais combina com você é:<span> ${estilo}</span>`;
+    }
+
+    function pagGenero() {
+        window.location.href = estilo + ".html";
+    }
+</script>
