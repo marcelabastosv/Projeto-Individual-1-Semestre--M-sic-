@@ -12,7 +12,7 @@
 }
 
 .inicio_quiz {
-    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.300) 50%, rgba(0, 0, 0, 0.300) 100%), url("/Projeto-Individual-1-Semestre--M-sic-/public/assets/img/fundo_prev.png");
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.300) 50%, rgba(0, 0, 0, 0.300) 100%),url('../img/fundo_prev.png');
     background-size: cover;
     align-items: center;
     justify-content: center;
@@ -88,6 +88,7 @@
     color: #ffffff;
     margin-top: 10px;
     font-size: 3em;
+    
 }
 
 .superior_quiz ul {
@@ -155,7 +156,7 @@
 .alternativa_qs label{
         cursor: pointer;
         width: 100%;
-        height: 100%;
+        height: 110%;
         align-items: center;
         display: flex;
         justify-content: center;
@@ -180,7 +181,7 @@
 .resultado_quiz {
  width: 100%;
  height: 100vh;
- background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.300) 50%, rgba(0, 0, 0, 0.300) 100%), url("/Projeto-Individual-1-Semestre--M-sic-/public/assets/img/fundo_prev.png");
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.300) 50%, rgba(0, 0, 0, 0.300) 100%),url('../img/fundo_prev.png');
  background-size: cover;
   align-content: center;
 }

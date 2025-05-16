@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,57 +9,123 @@
     <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico">
     <title>Másic</title>
 </head>
+
 <body class="body_login">
-  <div class="container_form">
+    <div class="container_form">
 
-    <div class="cad_form">
-        <form>
-            <h1>CRIAR UMA CONTA</h1>
-            <div class="input_form">
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
-                <button>CADASTRAR</button>
-            </div>
-        </form>
-    </div>
-    <div class="entrar_form">
-        <form>
-            <h1>ENTRAR NA SUA CONTA</h1>
-            <div class="input_form">
-                <input type="text" placeholder="Nome">
-                <input type="password" placeholder="Senha">
-                <a href="#">Esqueci minha Senha</a>
-                <button>ENTRAR</button>
-            </div>
-        </form>
-    </div>
-    <div class="efeito">
-        <div class="efeito_esquerda">
-            <h1>Bem-vindo(a) de volta</h1>
-            <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
-            <button id="entrar_form" class="btn_efeito">ENTRAR</button>
+        <div class="cad_form">
+            <form>
+                <h1>CRIAR UMA CONTA</h1>
+                <div class="input_form">
+                    <input type="text" placeholder="Nome" id="NomeCad">
+                    <span id="erroNome" class="erro"></span>
+                    <input type="email" placeholder="Email" id="EmailCad">
+                    <span id="erroEmail" class="erro"></span>
+                    <input type="text" placeholder="Seu Gênero Favorito" id="GenCad">
+                    <span id="erroGen" class="erro"></span>
+                    <input type="password" placeholder="Senha" id="SenhaCad">
+                    <span id="erroSenha" class="erro"></span>
+                    <input type="password" placeholder="Confirme a Senha" id="ConfSCad">
+                    <span id="erroConf" class="erro"></span>
+                    <button type="submit" onclick="ValidarCad(event)">CADASTRAR</button>
+                </div>
+            </form>
         </div>
-
+        <div class="entrar_form">
+            <form>
+                <h1>ENTRAR NA SUA CONTA</h1>
+                <div class="input_form">
+                    <input type="text" placeholder="Nome">
+                    <input type="password" placeholder="Senha">
+                    <a href="#">Esqueci minha Senha</a>
+                    <button onclick="ValidarLog(event)" type="submit">ENTRAR</button>
+                </div>
+            </form>
+        </div>
         <div class="efeito">
-            <div class="efeito_direita">
-                <h1>Olá, amigo(a)</h1>
-                <p>Insira seus dados pessoais e comece a jornada conosco</p>
-                    <button id="cad_form" class="btn_efeito">CRIAR CONTA</button>
+            <div class="efeito_esquerda">
+                <h1>Bem-vindo(a) de volta</h1>
+                <p>Para se manter conectado conosco, faça login com suas informações pessoais</p>
+                <button id="entrar_form" class="btn_efeito">ENTRAR</button>
             </div>
-    </div>
-  </div>  
+
+            <div class="efeito">
+                <div class="efeito_direita">
+                    <h1>Olá, amigo(a)</h1>
+                    <p>Insira seus dados pessoais e comece a jornada conosco</p>
+                    <button id="cad_form" class="btn_efeito">CRIAR CONTA</button>
+                </div>
+            </div>
+        </div>
 </body>
 
 <script>
-document.querySelector('#cad_form').onclick = () => {
-  document.querySelector('.container_form').classList.add('active');
-};
+    document.querySelector('#cad_form').onclick = () => {
+        document.querySelector('.container_form').classList.add('active');
+    };
 
-document.querySelector('#entrar_form').onclick = () => {
-  document.querySelector('.container_form').classList.remove('active');
-};
+    document.querySelector('#entrar_form').onclick = () => {
+        document.querySelector('.container_form').classList.remove('active');
+    };
 
+    function ValidarCad(event) {
+        event.preventDefault();
+
+        var nome = NomeCad.value;
+        var email = EmailCad.value;
+        var genero = GenCad.value;
+        var senha = SenhaCad.value;
+        var confirmacao = ConfSCad.value;
+
+        erroNome.innerHTML = '';
+        erroEmail.innerHTML = '';
+        erroGen.innerHTML = '';
+        erroSenha.innerHTML = '';
+        erroConf.innerHTML = '';
+
+
+        if (nome == '') {
+            erroNome.innerHTML = "Campo Nome é Obrigatório";
+            nome.focus();
+        }
+        if (email == '') {
+            erroEmail.innerHTML = "Campo Email é Obrigatório";
+            email.focus();
+        }
+        else if (!email.includes("@") || !email.includes(".")) {
+            erroEmail.innerHTML = "E-mail inválido. Deve conter '@' e '.'";
+            email.focus();
+        }
+
+        if (genero == '') {
+            erroGen.innerHTML = "Campo Gênero é Obrigatório.";
+            genero.focus();
+        }
+
+        if (senha == '') {
+            erroSenha.innerHTML = "Campo Senha é Obrigatório";
+            senha.focus();
+        } else if (senha.length < 4) {
+            erroSenha.innerHTML = "Senha inválida. Deve conter mais de 4 caracteres";
+            senha.focus();
+        }
+
+        if (confirmacao == '') {
+            erroConf.innerHTML = "Campo Confirmação de Senha é Obrigatório.";
+            confirmacao.focus();
+        } else if (senha != confirmacao) {
+            erroConf.innerHTML = "As senhas não estão corretas.";
+            confirmacao.focus()
+        }
+        else {
+            window.location.href = "quiz.html";
+        }
+    }
+
+    function ValidarLog(event) {
+        event.preventDefault();
+
+    }
 </script>
 
 </html>

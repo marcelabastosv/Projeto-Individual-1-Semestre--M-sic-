@@ -78,6 +78,7 @@ form{
     font-size: 1.3em;
     box-shadow: 8px 8px 0px #4c4c4c;
     transition: all 0.3s ease;
+    cursor: pointer;
   }
   
 .input_form button:hover {
@@ -95,6 +96,7 @@ form{
 }
 
 .efeito button {
+    cursor: pointer;
     color: rgb(0, 0, 0);
     background-color: #ffffff;
     border: none;
@@ -179,3 +181,7 @@ form h1{
     color: rgb(255, 255, 255);
 }
 
+.erro{
+    color: red;
+    font-size: 0.6em;
+}
