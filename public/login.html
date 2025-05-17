@@ -27,7 +27,7 @@
                     <span id="erroSenha" class="erro"></span>
                     <input type="password" placeholder="Confirme a Senha" id="ConfSCad">
                     <span id="erroConf" class="erro"></span>
-                    <button type="submit" onclick="ValidarCad(event)">CADASTRAR</button>
+                    <button type="submit" onclick="Cadastrar(event)">CADASTRAR</button>
                 </div>
             </form>
         </div>
@@ -35,10 +35,11 @@
             <form>
                 <h1>ENTRAR NA SUA CONTA</h1>
                 <div class="input_form">
-                    <input type="text" placeholder="Nome">
-                    <input type="password" placeholder="Senha">
-                    <a href="#">Esqueci minha Senha</a>
-                    <button onclick="ValidarLog(event)" type="submit">ENTRAR</button>
+                    <input type="text" placeholder="Email" id="EmailEn">
+                    <div id="erroEmailEntrar"></div>
+                    <input type="password" placeholder="Senha" id="SenhaEn">
+                    <div id="erroSenhaEntrar"></div>
+                    <button onclick="Entrar(event)" type="submit">ENTRAR</button>
                 </div>
             </form>
         </div>
@@ -68,7 +69,7 @@
         document.querySelector('.container_form').classList.remove('active');
     };
 
-    function ValidarCad(event) {
+    function Cadastrar(event) {
         event.preventDefault();
 
         var nome = NomeCad.value;
@@ -118,14 +119,107 @@
             confirmacao.focus()
         }
         else {
-            window.location.href = "quiz.html";
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nome,
+        emailServer: email,
+        generoServer: genero,
+        senhaServer: senha
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+ 
+            window.location = "quiz.html";
+;
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
         }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+             
+}
+
+
+function Entrar(event) {
+     event.preventDefault();
+
+        var emailEntrar = EmailEn.value;
+        var senhaEntrar = SenhaEn.value;
+
+        erroEmailEntrar.innerHTML = '';
+        erroSenhaEntrar.innerHTML = '';
+
+        if (emailEntrar == '') {
+            erroEmailEntrar.innerHTML = "Campo Email é Obrigatório";
+            emailEntrar.focus();
+        }
+        else if (!emailEntrar.includes("@") || !emailEntrar.includes(".")) {
+            erroEmailEntrar.innerHTML = "E-mail inválido. Deve conter '@' e '.'";
+            emailEntrar.focus();
+        }
+            if (senhaEntrar == '') {
+            erroSenhaEntrar.innerHTML = "Campo Senha é Obrigatório";
+            senhaEntrar.focus();
+            }
+
+            console.log("FORM LOGIN: ", emailEntrar);
+        console.log("FORM SENHA: ", senhaEntrar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailEntrar,
+                senhaServer: senhaEntrar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                        window.location = "index.html";
+
+                });
+
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
 
-    function ValidarLog(event) {
-        event.preventDefault();
-
-    }
 </script>
 
 </html>
