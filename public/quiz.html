@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/quiz.css">
     <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico">
     <title>Másic</title>
+     <script src="js/teste.js"></script>
 </head>
 
 <body onload="Esconder()">
@@ -64,181 +65,230 @@
         </div>
         <div id="resultado_quiz" class="resultado_quiz" style="display: none;">
             <div class="container_resultado">
-            <h2>RESULTADO DO QUIZ</h2>
-            <p id="mensagem_resultado"></p>
+                <h2>RESULTADO DO QUIZ</h2>
+                <p id="mensagem_resultado"></p>
                 <button onclick="pagGenero()">CONHEÇA SOBRE O GÊNERO</button>
-        </div>
+            </div>
         </div>
     </div>
 </body>
 
 </html>
 <script>
-    var perguntasResposta = [ 
-    {
-        pergunta: "Como você prefere passar seu tempo livre?",
-        reggae: "Curtindo a natureza e relaxando ao ar livre",
-        pop: "Saindo com amigos e aproveitando festas",
-        kpop: "Assistindo vídeos, dançando ou criando conteúdo nas redes",
-        rEb: "Refletindo, ouvindo música em casa ou lendo",
-        mpb: "Conversando com a família e ouvindo histórias antigas"
-    },
-    {
-        pergunta: "Como você se descreveria na maior parte do tempo?",
-        reggae: "Tranquilo(a) e de boas, gosto de paz",
-        pop: "Animado(a) e pra cima, tô sempre rindo",
-        kpop: "Intenso(a) e cheio(a) de energia, nunca paro",
-        rEb: "Reservado(a), mas com emoções fortes por dentro",
-        mpb: "Calmo(a), mas com momentos de empolgação"
-    },
-    {
-        pergunta: "Qual dessas atividades mais te representa?",
-        reggae: "Fazer trilhas ou cuidar de plantas",
-        pop: "Ir a eventos ou conhecer pessoas novas",
-        kpop: "Aprender coreografias e seguir tendências",
-        rEb: "Escrever, cantar ou desabafar com alguém próximo",
-        mpb: "Escutar música antiga e pensar sobre a vida"
-    },
-    {
-        pergunta: "Qual dessas roupas você se imagina usando em um show?",
-        reggae: "Roupas leves, confortáveis e coloridas",
-        pop: "Algo brilhante e chamativo para dançar muito",
-        kpop: "Um look estiloso, moderno e cheio de acessórios",
-        rEb: "Um visual elegante e discreto",
-        mpb: "Algo casual com um toque artístico"
-    },
-    {
-        pergunta: "O que a música significa para você?",
-        reggae: "Um caminho para a paz interior",
-        pop: "Energia, movimento e diversão",
-        kpop: "Identidade, conexão e estilo de vida",
-        rEb: "Emoção, amor e intensidade",
-        mpb: "Cultura, memória e expressão do povo"
-    },
-    {
-        pergunta: "Qual é a primeira coisa que você repara em uma música nova?",
-        reggae: "A vibe relaxante",
-        pop: "O refrão marcante",
-        kpop: "A batida e o visual do clipe",
-        rEb: "A letra profunda e a melodia",
-        mpb: "A mensagem cultural e o arranjo"
-    },
-    {
-        pergunta: "Em um karaokê, qual estilo de música você escolheria?",
-        reggae: "Algo calmo com mensagem positiva",
-        pop: "Um hit animado que todo mundo canta junto",
-        kpop: "Um sucesso coreano dançante",
-        rEb: "Uma música romântica e emocionante",
-        mpb: "Um clássico brasileiro cheio de sentimento"
-    }
-];
-
-var nQuestaoAtual = 0;
-var reggae = 0;
-var pop = 0;
-var kpop = 0;
-var rEb = 0;
-var mpb = 0;
-var estilo = "";
-var inicioQuiz;
-var fimQuiz;
-
-function Esconder() {
-    document.getElementById('jogo_quiz').style.display = "none";
-}
-
-function iniciarQuiz() {
-     inicioQuiz = new Date();
-    document.getElementById('jogo_quiz').style.display = "flex";
-    document.getElementById('inicio').style.display = "none";
-    document.getElementById('qtdQuestoes').innerHTML = perguntasResposta.length;
-    mostrarQuestao();
-}
-
-function mostrarQuestao() {
-    var questao = perguntasResposta[nQuestaoAtual];
-    document.getElementById("nQuestaoAtual").innerHTML = nQuestaoAtual + 1;
-    document.getElementById("spanQuestaoExibida").innerHTML = questao.pergunta;
-
-    var alternativas = [
-        questao.reggae,
-        questao.pop,
-        questao.kpop,
-        questao.rEb,
-        questao.mpb
+    var perguntasResposta = [
+        {
+            pergunta: "Como você prefere passar seu tempo livre?",
+            reggae: "Curtindo a natureza e relaxando ao ar livre",
+            pop: "Saindo com amigos e aproveitando festas",
+            kpop: "Assistindo vídeos, dançando ou criando conteúdo nas redes",
+            rEb: "Refletindo, ouvindo música em casa ou lendo",
+            mpb: "Conversando com a família e ouvindo histórias antigas"
+        },
+        {
+            pergunta: "Como você se descreveria na maior parte do tempo?",
+            reggae: "Tranquilo(a) e de boas, gosto de paz",
+            pop: "Animado(a) e pra cima, tô sempre rindo",
+            kpop: "Intenso(a) e cheio(a) de energia, nunca paro",
+            rEb: "Reservado(a), mas com emoções fortes por dentro",
+            mpb: "Calmo(a), mas com momentos de empolgação"
+        },
+        {
+            pergunta: "Qual dessas atividades mais te representa?",
+            reggae: "Fazer trilhas ou cuidar de plantas",
+            pop: "Ir a eventos ou conhecer pessoas novas",
+            kpop: "Aprender coreografias e seguir tendências",
+            rEb: "Escrever, cantar ou desabafar com alguém próximo",
+            mpb: "Escutar música antiga e pensar sobre a vida"
+        },
+        {
+            pergunta: "Qual dessas roupas você se imagina usando em um show?",
+            reggae: "Roupas leves, confortáveis e coloridas",
+            pop: "Algo brilhante e chamativo para dançar muito",
+            kpop: "Um look estiloso, moderno e cheio de acessórios",
+            rEb: "Um visual elegante e discreto",
+            mpb: "Algo casual com um toque artístico"
+        },
+        {
+            pergunta: "O que a música significa para você?",
+            reggae: "Um caminho para a paz interior",
+            pop: "Energia, movimento e diversão",
+            kpop: "Identidade, conexão e estilo de vida",
+            rEb: "Emoção, amor e intensidade",
+            mpb: "Cultura, memória e expressão do povo"
+        },
+        {
+            pergunta: "Qual é a primeira coisa que você repara em uma música nova?",
+            reggae: "A vibe relaxante",
+            pop: "O refrão marcante",
+            kpop: "A batida e o visual do clipe",
+            rEb: "A letra profunda e a melodia",
+            mpb: "A mensagem cultural e o arranjo"
+        },
+        {
+            pergunta: "Em um karaokê, qual estilo de música você escolheria?",
+            reggae: "Algo calmo com mensagem positiva",
+            pop: "Um hit animado que todo mundo canta junto",
+            kpop: "Um sucesso coreano dançante",
+            rEb: "Uma música romântica e emocionante",
+            mpb: "Um clássico brasileiro cheio de sentimento"
+        }
     ];
 
-    var botoes = [
-        document.getElementById("labelOpcaoUm"),
-        document.getElementById("labelOpcaoDois"),
-        document.getElementById("labelOpcaoTres"),
-        document.getElementById("labelOpcaoQuatro"),
-        document.getElementById("labelOpcaoCinco")
-    ];
 
-    for (var i = 0; i < alternativas.length; i++) {
-        botoes[i].innerHTML = alternativas[i];
+    var nQuestaoAtual = 0;
+    var reggae = 0;
+    var pop = 0;
+    var kpop = 0;
+    var rEb = 0;
+    var mpb = 0;
+    var genero = "";
+
+    function Esconder() {
+        document.getElementById('jogo_quiz').style.display = "none";
     }
 
-    document.getElementById("primeiraOpcao").onclick = btn_reggae;
-    document.getElementById("segundaOpcao").onclick = btn_pop;
-    document.getElementById("terceiraOpcao").onclick = btn_kpop;
-    document.getElementById("quartaOpcao").onclick = btn_reb;
-    document.getElementById("quintaOpcao").onclick = btn_mpb;
-}
-
-function proximaOuResultado() {
-    if (nQuestaoAtual < perguntasResposta.length - 1) {
-        nQuestaoAtual++;
+    function iniciarQuiz() {
+        document.getElementById('jogo_quiz').style.display = "flex";
+        document.getElementById('inicio').style.display = "none";
+        document.getElementById('qtdQuestoes').innerHTML = perguntasResposta.length;
         mostrarQuestao();
-    } else {
-        mostrarResultado();
     }
+
+    function mostrarQuestao() {
+        var questao = perguntasResposta[nQuestaoAtual];
+        document.getElementById("nQuestaoAtual").innerHTML = nQuestaoAtual + 1;
+        document.getElementById("spanQuestaoExibida").innerHTML = questao.pergunta;
+
+        var alternativas = [
+            questao.reggae,
+            questao.pop,
+            questao.kpop,
+            questao.rEb,
+            questao.mpb
+        ];
+
+        var botoes = [
+            document.getElementById("labelOpcaoUm"),
+            document.getElementById("labelOpcaoDois"),
+            document.getElementById("labelOpcaoTres"),
+            document.getElementById("labelOpcaoQuatro"),
+            document.getElementById("labelOpcaoCinco")
+        ];
+
+        for (var i = 0; i < alternativas.length; i++) {
+            botoes[i].innerHTML = alternativas[i];
+        }
+
+        document.getElementById("primeiraOpcao").onclick = btn_reggae;
+        document.getElementById("segundaOpcao").onclick = btn_pop;
+        document.getElementById("terceiraOpcao").onclick = btn_kpop;
+        document.getElementById("quartaOpcao").onclick = btn_reb;
+        document.getElementById("quintaOpcao").onclick = btn_mpb;
+    }
+
+    function proximaOuResultado() {
+        if (nQuestaoAtual < perguntasResposta.length - 1) {
+            nQuestaoAtual++;
+            mostrarQuestao();
+        } else {
+            mostrarResultado();
+        }
+    }
+
+    function btn_reggae() {
+        reggae++;
+        proximaOuResultado();
+    }
+
+    function btn_pop() {
+        pop++;
+        proximaOuResultado();
+    }
+
+    function btn_kpop() {
+        kpop++;
+        proximaOuResultado();
+    }
+
+    function btn_reb() {
+        rEb++;
+        proximaOuResultado();
+    }
+
+    function btn_mpb() {
+        mpb++;
+        proximaOuResultado();
+    }
+function enviarResultadoQuiz() {
+        var fkUsuario = sessionStorage.getItem('ID_USUARIO');
+
+    fetch("/medidas/fkUsuario", {
+        method: "GET",
+    })
+    .then(function (resposta) {
+        return resposta.json();
+    })
+    .then(function (json) {
+
+        fetch("/usuarios/quiz", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                GeneroServer: genero,
+                fkUsuarioServer: fkUsuario
+            }),
+        })
+        .then(function (resposta) {
+            console.log("Resposta do servidor:", resposta);
+
+            if (resposta.ok) {
+                alert("Resultado enviado com sucesso!");
+            } else {
+                throw "Erro ao enviar resultado do quiz!";
+            }
+        })
+        .catch(function (erro) {
+            console.error(`#ERRO: ${erro}`);
+        });
+
+    })
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
 }
 
-function btn_reggae() {
-    reggae++;
-    proximaOuResultado();
-}
+    function mostrarResultado() {
+        var pontos = [reggae, pop, kpop, rEb, mpb];
+        var maior = Math.max(...pontos);
 
-function btn_pop() {
-    pop++;
-    proximaOuResultado();
-}
+        if (maior == reggae) {
+            genero = "Reggae";
+        }
+        else if (maior == pop) {
+            genero = "Pop";
+        }
+        else if (maior == kpop) {
+            genero = "K-POP";
+        }
 
-function btn_kpop() {
-    kpop++;
-    proximaOuResultado();
-}
+        else if (maior == rEb) {
+            genero = "R&B";
+        }
+        else {
+            genero = "MPB";
+        }
 
-function btn_reb() {
-    rEb++;
-    proximaOuResultado();
-}
+        document.getElementById("jogo_quiz").style.display = "none";
+        document.getElementById("resultado_quiz").style.display = "block";
+        document.getElementById("mensagem_resultado").innerHTML = `O estilo musical que mais combina com você é:<span> ${genero}</span>`;
 
-function btn_mpb() {
-    mpb++;
-    proximaOuResultado();
-}
+        enviarResultadoQuiz();
+    }
 
-function mostrarResultado() {
-     fimQuiz = new Date();
-    var pontos = [reggae, pop, kpop, rEb, mpb];
-    var maior = Math.max(...pontos);
-
-    if (maior == reggae) estilo = "Reggae";
-    else if (maior == pop) estilo = "Pop";
-    else if (maior == kpop) estilo = "K-POP";
-    else if (maior == rEb) estilo = "R&B";
-    else estilo = "MPB";
-
-    document.getElementById("jogo_quiz").style.display = "none";
-    document.getElementById("resultado_quiz").style.display = "block";
-    document.getElementById("mensagem_resultado").innerHTML = `O estilo musical que mais combina com você é:<span> ${estilo}</span>`;
-}
-
-function pagGenero() {
-    window.location.href = estilo + ".html";
-}
+    function pagGenero() {
+        window.location.href = genero + ".html";
+    }
 
 </script>

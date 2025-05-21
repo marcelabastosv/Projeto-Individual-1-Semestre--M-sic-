@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Másic</title>
+    <link rel="stylesheet" href="assets/css/recomendacoes.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico">
+</head>
+
+<body>
+    <header class="menu_header">
+        <img src="assets/img/logo_branca.png" alt="Logo de própria autoria">
+        <nav class="menu_nav">
+            <ul>
+                <li class="perfil_usuario">
+                    <div class="perfil_btn">
+                        <a class="l_btn">
+                            <i class='bx bxs-user'></i> MEU PERFIL </a>
+                        <div class="perfil_caixa">
+                            <div class="inf_caixa">
+                                <p>Marcela Bastos</p>
+                                <p>Reggae</p>
+                            </div>
+                            <div class="li_caixa">
+                                <a href="inicioUser.html">Página Inicial</a>
+                                <a href=".html">Minha Dashboard</a>
+                                <a href=".html">Recomendações</a>
+                                <a href="index.html">Sair</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class="divestilos_inicio">
+        <div class="estilos_hover">
+            <div class="estilos_frase">
+                <p>ESTILOS MUSICAIS
+                <p class="estilos_simbolo"></p>
+            </div>
+            <div class="estilos_conteudo">
+                <a href="Pop.html" id="pop">POP</a>
+                <a href="K-POP.html" id="kpop">K-POP</a>
+                <a href="Reggae.html" id="reggae">REGGAE</a>
+                <a href="MPB.html" id="mpb">MPB</a>
+                <a href="R&B.html" id="reb">R&B</a>
+            </div>
+        </div>
+    </div>
+    <section class="form_recomendacao">
+        <div class="banner_form">
+        <h3>FAÇA A SUA RECOMENDAÇÃO</h3>
+        </div>
+ 
+        <div class="form_recom">
+            <form method="post" onsubmit="return publicar()" id="form_postagem">
+                <div class="input_form">
+                    <input type="text" placeholder="Música"  id="nMusica">
+                    <input type="text" placeholder="Cantor / Banda" id="nCantor">
+                    <textarea placeholder="Por que recomendo essa música..."  maxlength="250" rows="5" id="descricao"></textarea>
+                    <button class="btn_form" type="submit">ENVIAR</button>
+                </div>
+            </form>
+        </div>
+        
+    </section>
+            <section class="banner">
+        <p>Encontre as melhores músicas, cantores e artistas, por base nas </p>
+        <h3>RECOMENDAÇÕES</h3>
+        </section>
+    <section class="cards_recom">
+        <div class="container_recom" id="recomendacoes"></div>
+        <button onclick="Mostrar()" class="btn_vm" id="btnVerMais_recom">VER MAIS</button>
+    </section>
+
+        <footer>
+        <div class="linha_rodape"> </div>
+        <div class="logo_rodape">
+            <img src="assets/img/logo_preta.png" alt="Logo de própria autoria">
+        </div>
+        <div class="descricao_rodape">
+            <p>WebSite desenvolvido por Marcela Bastos Vicente para fins acadêmicos.</p>
+        </div>
+        <div class="final_rodape">
+            <p>MÁSIC 2025</p>
+        </div>
+    </footer>
+</body>
+<script>
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            musica: nMusica.value,
+            cantor: nCantor.value,
+            descricao: descricao.value
+        }
+
+         fetch(`/avisos/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    
+    function atualizarFeed() {
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("recomendacoes");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("recomendacoes");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanNomeUsuario = document.createElement("span");
+                        var spanNomeMusica = document.createElement("span");
+                        var spanNomeCantor = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+
+
+                        spanNomeUsuario.innerHTML = "Usuario: <b>" + publicacao.nome + "</b>";
+                        spanNomeMusica.innerHTML = "Musica: <b>" + publicacao.musica + "</b>";
+                        spanNomeCantor.innerHTML = "Cantor/Banda: <b>" + publicacao.cantor + "</b>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+
+                        divPublicacao.className = "publicacao";
+                        spanNomeUsuario.className = "publicacao-nome";
+                        spanNomeMusica.className = "publicacao-musica";
+                        spanNomeCantor.className = "publicacao-cantor";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divPublicacao.appendChild(spanNomeUsuario);
+                        divPublicacao.appendChild(spanNomeMusica);
+                        divPublicacao.appendChild(spanNomeCantor);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+</script>
+</html>

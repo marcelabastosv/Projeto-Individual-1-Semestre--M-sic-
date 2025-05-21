@@ -10,6 +10,10 @@ router.post("/cadastrar", function (req, res) {
 
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
-});
+})
+
+router.post("/quiz", function (req, res) {
+    usuarioController.quiz(req, res);
+})
 
 module.exports = router;
