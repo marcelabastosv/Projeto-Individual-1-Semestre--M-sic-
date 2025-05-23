@@ -35,10 +35,8 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
-    var genero = req.body.generoServer;
     var senha = req.body.senhaServer;
 
     // Faça as validações dos valores
@@ -46,38 +44,28 @@ function cadastrar(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    }else if (genero == undefined) {
-        res.status(400).send("Seu genero favorito está undefined!");
-    } else if (senha == undefined) {
+    }else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, genero, senha)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
+        usuarioModel.cadastrar(nome, email, senha)
+    .then(function (resultado) {
+      
+        res.json({
+            idUsuario: resultado.insertId
+        });
+    })
+    .catch(function (erro) {
+        
+        res.status(500).json(erro.sqlMessage);
+    });
 
+    }}
 
 function quiz(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var genero = req.body.GeneroServer;
     var fkUsuario = req.body.fkUsuarioServer;
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.quiz(genero, fkUsuario)
             .then(
                 function (resultado) {
@@ -94,6 +82,8 @@ function quiz(req, res) {
                 }
             );
 }
+    
+
 
 module.exports = {
     autenticar,

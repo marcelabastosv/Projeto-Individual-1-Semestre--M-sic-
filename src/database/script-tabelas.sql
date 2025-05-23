@@ -5,7 +5,6 @@ CREATE TABLE Usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     NomeUsuario VARCHAR(125),
     Email VARCHAR(255),
-    Genero_Favorito VARCHAR(45),
     Senha VARCHAR(45)
 );
 

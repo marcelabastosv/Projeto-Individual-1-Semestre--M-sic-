@@ -75,6 +75,7 @@
 </div>
            </div>
             <div id="grafico">
+                <canvas id="grafico_barra"></canvas>
             </div>
         </div>
     </div>
@@ -92,9 +93,6 @@
     window.onload = obterDadosGrafico();
 
     function obterDadosGrafico(idResultado_Usuario) {
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
 
         fetch(`/medidas/ultimas/${idResultado_Usuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -128,17 +126,10 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+        label: 'Usuários por gênero musical',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            },
-            {
-                label: 'Temperatura',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(199, 52, 52)',
                 tension: 0.1
             }]
         };
@@ -151,8 +142,8 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
+            dados.datasets[0].data.push(registro.Genero);
+            dados.datasets[0].data.push(registro.total);
         }
 
         console.log('----------------------------------------------')
@@ -171,7 +162,7 @@
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
+            document.getElementById(`grafico_barra`),
             config
         );
 

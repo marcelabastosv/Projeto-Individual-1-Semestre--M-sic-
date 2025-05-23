@@ -1,29 +1,27 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas() {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+    var instrucaoSql = `SELECT Genero,count(idResultado_Usuario) FROM Quiz_Resultado_Usuario GROUP BY Genero;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal() {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
+    var instrucaoSql = `SELECT Genero,count(idResultado_Usuario) FROM Quiz_Resultado_Usuario GROUP BY Genero;`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarkpis(){
+        var instrucaoSql = `SELECT 
+     (SELECT count(idResultado_Usuario) FROM Quiz_Resultado_Usuario) AS totalUsuarios,
+     (SELECT MIN(Genero) FROM Quiz_Resultado_Usuario) AS menorGenero,
+     (SELECT MAX(Genero) FROM Quiz_Resultado_Usuario) AS maiorGenero,
+     (SELECT Genero FROM Quiz_Resultado_Usuario WHERE fkUsuario = ${idUsuario}) AS generoUsuario;`
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -39,5 +37,6 @@ function buscarfkUsuario(idUsuario) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
+    buscarkpis,
     buscarfkUsuario
 }

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="assets/css/quiz.css">
     <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico">
     <title>Másic</title>
-     <script src="js/teste.js"></script>
 </head>
 
 <body onload="Esconder()">
@@ -246,6 +245,7 @@ function enviarResultadoQuiz() {
             if (resposta.ok) {
                 alert("Resultado enviado com sucesso!");
             } else {
+                alert("Você já realizou esse quiz uma vez...")
                 throw "Erro ao enviar resultado do quiz!";
             }
         })
