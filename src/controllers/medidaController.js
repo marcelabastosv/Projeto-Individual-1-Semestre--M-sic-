@@ -41,11 +41,11 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
-function buscarkpis(req, res) {
+function buscarkpisDash(req, res) {
 
     console.log(`Recuperando medidas em tempo real`);
 
-    medidaModel.buscarMedidasEmTempoReal().then(function (resultado) {
+    medidaModel.buscarkpisDash().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -80,6 +80,6 @@ function buscarfkUsuario(req, res) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarkpis,
+    buscarkpisDash,
     buscarfkUsuario
 }

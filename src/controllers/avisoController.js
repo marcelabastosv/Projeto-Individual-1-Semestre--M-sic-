@@ -61,18 +61,21 @@ function pesquisarDescricao(req, res) {
 }
 
 function publicar(req, res) {
-    var titulo = req.body.titulo;
+    var musica = req.body.musica;
+    var cantor = req.body.cantor;
     var descricao = req.body.descricao;
     var idUsuario = req.params.idUsuario;
 
-    if (titulo == undefined) {
-        res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
+    if (musica == undefined) {
+        res.status(400).send("A música está indefinido!");
+    } else if (cantor == undefined) {
+        res.status(400).send("O cantor está indefinido!");
+    }else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+        avisoModel.publicar(musica, cantor, descricao, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);

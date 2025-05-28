@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarUltimasMedidas() {
 
-    var instrucaoSql = `SELECT Genero,count(idResultado_Usuario) FROM Quiz_Resultado_Usuario GROUP BY Genero;`;
+    var instrucaoSql = `SELECT Genero,count(idResultado_Usuario) AS totalGenero FROM Quiz_Resultado_Usuario GROUP BY Genero;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -10,19 +10,19 @@ function buscarUltimasMedidas() {
 
 function buscarMedidasEmTempoReal() {
 
-    var instrucaoSql = `SELECT Genero,count(idResultado_Usuario) FROM Quiz_Resultado_Usuario GROUP BY Genero;`
+    var instrucaoSql = `SELECT Genero,count(idResultado_Usuario) AS totalGenero FROM Quiz_Resultado_Usuario GROUP BY Genero;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function buscarkpis(){
-        var instrucaoSql = `SELECT 
-     (SELECT count(idResultado_Usuario) FROM Quiz_Resultado_Usuario) AS totalUsuarios,
-     (SELECT MIN(Genero) FROM Quiz_Resultado_Usuario) AS menorGenero,
-     (SELECT MAX(Genero) FROM Quiz_Resultado_Usuario) AS maiorGenero,
-     (SELECT Genero FROM Quiz_Resultado_Usuario WHERE fkUsuario = ${idUsuario}) AS generoUsuario;`
-
+function buscarkpisDash(){
+        var instrucaoSql = `  SELECT 
+    (SELECT COUNT(*) FROM Quiz_Resultado_Usuario) AS totalUsuarios,
+    (SELECT Genero FROM Quiz_Resultado_Usuario GROUP BY Genero ORDER BY COUNT(*) ASC LIMIT 1) AS menorGenero,
+    (SELECT Genero FROM Quiz_Resultado_Usuario GROUP BY Genero ORDER BY COUNT(*) DESC LIMIT 1) AS maiorGenero,
+	(SELECT Genero FROM Quiz_Resultado_Usuario JOIN Usuario ON fkUsuario = idUsuario LIMIT 1) AS generoUsuario;;`
+    
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -37,6 +37,6 @@ function buscarfkUsuario(idUsuario) {
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarkpis,
+    buscarkpisDash,
     buscarfkUsuario
 }

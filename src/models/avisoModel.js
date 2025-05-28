@@ -1,71 +1,78 @@
 var database = require("../database/config");
 
 function listar() {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    console.log("ACESSEI O MODEL listar()");
     var instrucaoSql = `
         SELECT 
-            a.id AS idAviso,
-            a.titulo,
-            a.descricao,
-            a.fk_usuario,
-            u.id AS idUsuario,
-            u.nome,
-            u.email,
-            u.senha
-        FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id;
+            r.idRecomendacao_Usuario AS idRecomendacao,
+            r.NomeMusica,
+            r.Cantor,
+            r.Descricao,
+            r.dtHora,
+            r.fkUsuarioRem,
+            u.idUsuario,
+            u.NomeUsuario,
+            u.Email,
+            u.Senha
+        FROM Recomendacao_Usuario r
+        INNER JOIN Usuario u
+            ON r.fkUsuarioRem = u.idUsuario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function pesquisarDescricao(texto) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
+    console.log("ACESSEI O MODEL pesquisarDescricao()");
     var instrucaoSql = `
         SELECT 
-            a.id AS idAviso,
-            a.titulo,
-            a.descricao,
-            a.fk_usuario,
-            u.id AS idUsuario,
-            u.nome,
-            u.email,
-            u.senha
-        FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-        WHERE a.descricao LIKE '${texto}';
+            r.idRecomendacao_Usuario AS idRecomendacao,
+            r.NomeMusica,
+            r.Cantor,
+            r.Descricao,
+            r.dtHora,
+            r.fkUsuarioRem,
+            u.idUsuario,
+            u.NomeUsuario,
+            u.Email,
+            u.Senha
+        FROM Recomendacao_Usuario r
+        INNER JOIN Usuario u
+            ON r.fkUsuarioRem = u.idUsuario
+        WHERE r.Descricao LIKE '%${texto}%';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 function listarPorUsuario(idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+    console.log("ACESSEI O MODEL listarPorUsuario()");
     var instrucaoSql = `
         SELECT 
-            a.id AS idAviso,
-            a.titulo,
-            a.descricao,
-            a.fk_usuario,
-            u.id AS idUsuario,
-            u.nome,
-            u.email,
-            u.senha
-        FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-        WHERE u.id = ${idUsuario};
+            r.idRecomendacao_Usuario AS idRecomendacao,
+            r.NomeMusica,
+            r.Cantor,
+            r.Descricao,
+            r.dtHora,
+            r.fkUsuarioRem,
+            u.idUsuario,
+            u.NomeUsuario,
+            u.Email,
+            u.Senha
+        FROM Recomendacao_Usuario r
+        INNER JOIN Usuario u
+            ON r.fkUsuarioRem = u.idUsuario
+        WHERE u.idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
-function publicar(titulo, descricao, idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
+function publicar(nomeMusica, cantor, descricao, idUsuario) {
+    console.log("ACESSEI O MODEL publicar(): ", nomeMusica, cantor, descricao, idUsuario);
     var instrucaoSql = `
-        INSERT INTO aviso (titulo, descricao, fk_usuario) VALUES ('${titulo}', '${descricao}', ${idUsuario});
+        INSERT INTO Recomendacao_Usuario (NomeMusica, Cantor, Descricao, fkUsuarioRem) 
+        VALUES ('${nomeMusica}', '${cantor}', '${descricao}', ${idUsuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

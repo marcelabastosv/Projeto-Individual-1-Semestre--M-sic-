@@ -12,7 +12,8 @@ CREATE TABLE Quiz_Resultado_Usuario (
     idResultado_Usuario INT PRIMARY KEY AUTO_INCREMENT,
     Genero VARCHAR(45),
     fkUsuario INT UNIQUE,
-        FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario)
+    CONSTRAINT chkQuiz FOREIGN KEY (fkUsuario) 
+    REFERENCES Usuario(idUsuario)
 );
 
 CREATE TABLE Recomendacao_Usuario (
