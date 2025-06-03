@@ -34,9 +34,9 @@
                 <h1>ENTRAR NA SUA CONTA</h1>
                 <div class="input_form">
                     <input type="text" placeholder="Email" id="EmailEn">
-                    <div id="erroEmailEntrar"></div>
+                    <div id="erroEmailEntrar" class="erro"> </div>
                     <input type="password" placeholder="Senha" id="SenhaEn">
-                    <div id="erroSenhaEntrar"></div>
+                    <div id="erroSenhaEntrar" class="erro"></div>
                     <button onclick="Entrar(event)" type="submit">ENTRAR</button>
                 </div>
             </form>
@@ -100,8 +100,8 @@
         erroSenha.innerHTML = "Campo Senha é Obrigatório";
         senha.focus();
         return;
-    } else if (senha.length < 4) {
-        erroSenha.innerHTML = "Senha inválida. Deve conter mais de 4 caracteres";
+    } else if (senha.length < 6) {
+        erroSenha.innerHTML = "Senha inválida. Deve conter mais de 6 caracteres";
         senha.focus();
         return;
     }
@@ -190,12 +190,14 @@ function Entrar(event) {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-
-                        window.location = "inicioUser.html";
+   
+                    alert('Você será direcionado a página do usuário')
+                    window.location = "inicioUser.html";
 
                 });
 
             } else {
+               alert('Tente novamente, confira se os dados estão corretos e que você já tenha um cadastro')
                 console.log("Houve um erro ao tentar realizar o login!");
             }
 

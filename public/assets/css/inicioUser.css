@@ -104,13 +104,16 @@ section {
 }
 
 .perfil_caixa .inf_caixa {
-    font-size: 0.8em;
-    height: 40px;
-    font-weight: 500;
-    border: 2px solid black;
-      box-shadow: 6px 6px 0px #222;
-    margin-bottom: 12px;
-    text-align: center;
+  font-size: 0.8em;
+  height: 30px;
+  font-weight: 500;
+  border: 2px solid black;
+  box-shadow: 6px 6px 0px #222;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .perfil_caixa .li_caixa a {

@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+* {
+  font-family: "Cal Sans", sans-serif;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+section {
+  scroll-margin-top: 13vh;
+}
+
+
+.menu_header {
+  position: fixed;
+  width: 100%;
+  height: 13vh;
+  padding: 20px 5%;
+  display: flex;
+  align-items: center;
+  background-color: #d35400cc;
+  backdrop-filter: blur(10px);
+  z-index: 4;
+  top: 0;
+}
+
+.menu_header img {
+  height: 80%;
+}
+
+.menu_nav {
+  width: 100%;
+  font-size: 1em;
+}
+
+.menu_nav ul {
+  display: flex;
+  gap: 50px;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+
+.menu_nav .l_interno {
+  position: relative;
+  color: white;
+}
+
+.menu_nav .l_interno:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  margin: -4px 0;
+  background-color: white;
+  transition: all 0.4s ease-in 0s;
+}
+
+.menu_nav .l_interno:hover:after {
+  width: 100%;
+  background-color: white;
+}
+
+.menu_nav .l_btn {
+  color: #d35400;
+  background-color: white;
+  padding: 6px 10px;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.menu_nav .l_btn:hover {
+  background-color: transparent;
+  color: white;
+  border: 3px solid white;
+  transform: scale(1.00);
+}
+
+.perfil_usuario {
+  position: relative;
+}
+
+.perfil_btn {
+  position: relative;
+  display: inline-block;
+}
+
+
+.perfil_caixa {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: -40px;
+  background: white;
+  color: black;
+  padding: 1rem;
+  z-index: 10;
+  min-width: 200px;
+}
+
+.perfil_caixa .inf_caixa {
+  font-size: 0.8em;
+  height: 30px;
+  font-weight: 500;
+  border: 2px solid black;
+  box-shadow: 6px 6px 0px #222;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.perfil_caixa .li_caixa a {
+  display: block;
+  padding: 0.4rem;
+  text-decoration: none;
+  color: black;
+  transition: background 0.2s;
+  font-size: 0.7em;
+}
+
+.perfil_caixa a:hover {
+  background-color: #f0f0f0;
+}
+
+.perfil_btn:hover .perfil_caixa {
+  display: block;
+}
+
+
+.divestilos_inicio {
+  position: absolute;
+  top: 5.6em;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #fffffffd;
+  color: #d35400;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+
+.estilos_hover {
+  position: relative;
+}
+
+.estilos_frase {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.estilos_simbolo {
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+.estilos_simbolo::before {
+  content: '+';
+}
+
+.estilos_hover:hover .estilos_simbolo::before {
+  content: '−';
+}
+
+.estilos_conteudo {
+  opacity: 0;
+  transform: translateY(-50%) translateX(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  white-space: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+}
+
+.estilos_hover:hover .estilos_conteudo {
+  opacity: 1;
+}
+
+.estilos_conteudo a {
+  color: #d35400;
+  margin-right: 20px;
+}
+
+.estilos_conteudo #pop:hover {
+  color: #d43791;
+}
+
+.estilos_conteudo #kpop:hover {
+  color: #cb00bc;
+}
+
+.estilos_conteudo #reggae:hover {
+  color: #d35400;
+}
+
+.estilos_conteudo #mpb:hover {
+  color: #236222;
+}
+
+.estilos_conteudo #reb:hover {
+  color: #7b2525;
+}
+
+.inicio_estilo {
+  display: flex;
+  background: #d35400;
+  background: linear-gradient(90deg, rgba(191, 76, 0, 1) 30%, rgba(255, 139, 63, 1) 100%);
+  height: 86vh;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5.6em;
+}
+
+.conteudo_estilo {
+  width: 50%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.conteudo_estilo h2 {
+  margin-top: 6rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px 40px;
+  margin-bottom: 20px;
+  font-size: 5em;
+  width: 100%;
+
+}
+
+.conteudo_estilo p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.img_estilo {
+  width: 50%;
+  height: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.img_estilo img {
+  width: 86%;
+  height: auto;
+  object-fit: cover;
+}
+
+.historia_estilo {
+  width: 100%;
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.historia_estilo h2 {
+  display: inline-block;
+  position: relative;
+  background: white;
+  color: #d35400;
+  padding: 10px 25px;
+  border: 1px solid #b84900;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  box-shadow: 8px 8px 0px #b84900;
+}
+
+.conteudo_historia {
+  margin-top: 2em;
+  width: 60%;
+  line-height: 30px;
+  background-color: #d35400eb;
+  padding: 60px 50px;
+  color: #ffffff;
+  text-align: justify;
+}
+
+.cantores_estilo {
+  width: 100%;
+  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #d35400cc;
+}
+
+.cantores_estilo h2 {
+  display: inline-block;
+  position: relative;
+  background: white;
+  color: #d35400;
+  padding: 10px 25px;
+  border: 1px solid #b84900;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  box-shadow: 8px 8px 0px #b84900;
+}
+
+.cards_cantor {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.card_cantor {
+  position: relative;
+  width: 20%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: 0.5s ease;
+  height: 45vh;
+}
+
+.nomeCt {
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  transition: height 0.5s ease;
+  padding: 40px;
+}
+
+.textoCantor{
+  opacity: 0;
+}
+
+.card_cantor:hover .nomeCt {
+  height: 100%;
+}
+
+.card_cantor:hover .textoCantor {
+  opacity: 1;
+}
+
+.nomeCt p {
+  font-size: 1.4em;
+}
+
+
+.nomeCantor {
+  font-weight: 600;
+  font-size: 2.4em;
+}
+
+.imgCt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(191, 76, 0, 1) 30%, rgba(255, 139, 63, 1) 100%);
+  transition: opacity 0.3s ease;
+}
+
+.card_cantor:hover .imgCt {
+  opacity: 0;
+}
+
+.imgCt img {
+  width: 100%;
+}

@@ -257,6 +257,7 @@ section {
   height: 100%;
   display: flex;
   background-color: black;
+  border: 2px solid black;
 }
 
 .banner_button {

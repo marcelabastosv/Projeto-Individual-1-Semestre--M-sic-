@@ -15,8 +15,8 @@ function listar() {
             u.Email,
             u.Senha
         FROM Recomendacao_Usuario r
-        INNER JOIN Usuario u
-            ON r.fkUsuarioRem = u.idUsuario;
+         JOIN Usuario u
+            ON r.fkUsuarioRem = u.idUsuario ORDER BY dtHora DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -37,7 +37,7 @@ function pesquisarDescricao(texto) {
             u.Email,
             u.Senha
         FROM Recomendacao_Usuario r
-        INNER JOIN Usuario u
+         JOIN Usuario u
             ON r.fkUsuarioRem = u.idUsuario
         WHERE r.Descricao LIKE '%${texto}%';
     `;
@@ -60,7 +60,7 @@ function listarPorUsuario(idUsuario) {
             u.Email,
             u.Senha
         FROM Recomendacao_Usuario r
-        INNER JOIN Usuario u
+         JOIN Usuario u
             ON r.fkUsuarioRem = u.idUsuario
         WHERE u.idUsuario = ${idUsuario};
     `;

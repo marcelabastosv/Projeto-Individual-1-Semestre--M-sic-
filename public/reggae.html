@@ -2,74 +2,197 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Másic</title>
-    <link rel="stylesheet" href="assets/css/reggae.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Másic</title>
+  <link rel="stylesheet" href="assets/css/reggae.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico" />
 </head>
 
 <body>
-    <header class="menu_header">
-        <img src="assets/img/logo_branca.png" alt="Logo de própria autoria">
-        <nav class="menu_nav">
-            <ul>
-                <li><a class="l_interno" href="#inicio_li">INICIO</a></li>
-                <li><a class="l_interno" href="#def_li">DEFINIÇÃO</a></li>
-                <li><a class="l_interno" href="#importancia_li">IMPORTÂNCIA</a></li>
-                <li><a class="l_interno" href="#cantores_li">CANTORES</a></li>
-                <li><a class="l_interno" href="#curio_li">CURIOSIDADES</a></li>
-               <li class="perfil_usuario">
-                <div class="perfil_btn">
-        <a class="l_btn">
-            <i class='bx bxs-user'></i> MEU PERFIL </a>
-          <div class="perfil_caixa">
-            <div class="inf_caixa" id="b_usuario">
+  <header class="menu_header">
+    <img src="assets/img/logo_branca.png" alt="Logo de própria autoria" />
+    <nav class="menu_nav">
+      <ul>
+        <li><a class="l_interno" href="#inicio_li">INICIO</a></li>
+        <li><a class="l_interno" href="#hist_li">HISTÓRIA</a></li>
+        <li><a class="l_interno" href="#cantor_li">ARTISTAS</a></li>
+        <li><a class="l_interno" href="#cantores_li">MUSICAS</a></li>
+        <li class="perfil_usuario">
+          <div class="perfil_btn">
+            <a class="l_btn">
+              <i class="bx bxs-user"></i> MEU PERFIL
+            </a>
+            <div class="perfil_caixa">
+              <div class="inf_caixa">
+                <span id="b_usuario"></span>
+              </div>
+              <div class="li_caixa">
+                <a href="inicioUser.html">Página Inicial</a>
+                <a href=".html">Minha Dashboard</a>
+                <a href=".html">Recomendações</a>
+                <a href="index.html">Sair</a>
+              </div>
             </div>
-            <div class="li_caixa">
-            <a href="inicioUser.html">Página Inicial</a>
-            <a href=".html">Minha Dashboard</a>
-            <a href=".html">Recomendações</a>
-            <a href="index.html">Sair</a>
-            </div>
-        </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="divestilos_inicio">
+    <div class="estilos_hover">
+      <div class="estilos_frase">
+        <p>ESTILOS MUSICAIS</p>
+        <p class="estilos_simbolo"></p>
+      </div>
+      <div class="estilos_conteudo">
+        <a href="Pop.html" id="pop">POP</a>
+        <a href="K-POP.html" id="kpop">K-POP</a>
+        <a href="Reggae.html" id="reggae">REGGAE</a>
+        <a href="MPB.html" id="mpb">MPB</a>
+        <a href="R&B.html" id="reb">R&B</a>
+      </div>
     </div>
-</li>
-
-            </ul>
-        </nav>
-    </header>
-
-    <div class="divestilos_inicio">
-        <div class="estilos_hover">
-            <div class="estilos_frase">
-                <p>ESTILOS MUSICAIS
-                <p class="estilos_simbolo"></p>
-            </div>
-            <div class="estilos_conteudo">
-                <a href="Pop.html" id="pop">POP</a>
-                <a href="K-POP.html" id="kpop">K-POP</a>
-                <a href="Reggae.html" id="reggae">REGGAE</a>
-                <a href="MPB.html" id="mpb">MPB</a>
-                <a href="R&B.html" id="reb">R&B</a>
-            </div>
-        </div>
+  </div>
+  <section class="inicio_estilo" id="inicio_li">
+    <div class="conteudo_estilo">
+      <h2>REGGAE</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit doloribus maiores labore velit
+        asperiores, ipsa omnis, sunt soluta repellat alias maxime modi veniam nulla ipsum ex, ratione
+        consequatur ea! Magnam.
+      </p>
     </div>
 
-        <section class="video_inicio" id="inicio_li">
-        <video autoplay muted loop playsinline alt="Vídeo: The Weeknd/ Clipe Starboy">
-            <source src="assets/img/videoInicial.mp4" type="video/mp4">
-        </video>
-        <div class="img_inicio">
-            <img src="./assets/img/tw_inicio.png" alt="">
+    <div class="img_estilo">
+      <img src="assets/img/inicio_reggae.png" alt="Imagem Editada por prória autoria" />
+    </div>
+  </section>
+
+  <section class="historia_estilo" id="hist_li">
+    <h2>HISTÓRIA DO REGGAE</h2>
+    <div class="conteudo_historia">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, minima sint aspernatur maiores
+        obcaecati voluptatum placeat inventore? Incidunt natus ab consequatur explicabo, harum qui, tempora nam
+        ad libero ea alias. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia blanditiis,
+        sapiente dignissimos ipsum mollitia suscipit explicabo, dolor saepe aperiam veniam, neque vitae
+        voluptatibus provident dolorem. Cupiditate odit illum a deserunt. Lorem ipsum dolor sit, amet
+        consectetur adipisicing elit. Ut quo est officia consequuntur unde! Mollitia iusto perferendis nostrum
+        cupiditate libero inventore nemo quod, excepturi non a saepe rem, hic quaerat. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Officiis debitis quae excepturi fugiat amet. Molestiae, laborum
+        dolorum? Eum eos harum dolor veritatis placeat, blanditiis nulla magni maxime consectetur saepe maiores?
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus facilis exercitationem vero eaque
+        ipsam natus dicta soluta officiis, illo eveniet itaque nostrum. Autem, tenetur accusantium repellat illo
+        quos ea corrupti!
+      </p>
+    </div>
+  </section>
+
+  <section class="cantores_estilo" id="cantor_li">
+    <h2>CANTORES DO REGGAE</h2>
+    <div class="cards_cantor">
+      <div class="card_cantor" id="card_0">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome_0"></div>
+          <div class="textoCantor" id="texto_0"></div>
+        </div>
+        <div class="imgCt">
+          <img id="img_0" src="" alt="" />
         </div>
 
-        <div class="frase_inicio">
-            <blockquote>"Aruumar."
-            </blockquote>
+      </div>
+
+      <div class="card_cantor" id="card_1">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome_1">
+            <div class="textoCantor" id="texto_1"></div>
+          </div>
         </div>
-        <div class="citacao_inicio">
-            <cite>- - Alexandre Carlo</cite>
+        <div class="imgCt">
+          <img id="img_1" src="" alt="" />
         </div>
-    </section>
+      </div>
+
+      <div class="card_cantor" id="card_2">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome_2"></div>
+                  <div class="textoCantor" id="texto_2"></div>
+        </div>
+        <div class="imgCt">
+          <img id="img_2" src=""
+            alt="" />
+        </div>
+      </div>
+
+      <div class="card_cantor" id="card_3">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome_3"></div>
+                  <div class="textoCantor" id="texto_3"></div>
+        </div>
+        <div class="imgCt">
+          <img id="img_3" src=""
+            alt="" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    var conteudo_cantor = [
+      {
+        nome: "NATIRUTS",
+        imagem: "assets/img/natiruts_cantores_reggae.png",
+        texto: "Banda brasileira de reggae, formada em Brasília."
+      },
+      {
+        nome: "NATIRUTS",
+        imagem: "assets/img/natiruts_cantores_reggae.png",
+        texto: "OOSOSO"
+      },
+      {
+        nome: "NATIRUTS",
+        imagem: "assets/img/natiruts_cantores_reggae.png",
+        texto: "OOSOSO"
+      },
+      {
+        nome: "NATIRUTS",
+        imagem: "assets/img/natiruts_cantores_reggae.png",
+        texto: "OOSOSO"
+      },
+      {
+        nome: "NATIRUTS",
+        imagem: "assets/img/natiruts_cantores_reggae.png",
+        texto: "OOSOSO"
+      }
+    ];
+
+    var posicao = 0;
+
+    function atualizarCards() {
+      for (var i = 0; i < 4; i++) {
+        var posAtual = (posicao + i) % conteudo_cantor.length;
+        var nome = document.getElementById("nome_" + i);
+        var imagem = document.getElementById("img_" + i);
+        var texto = document.getElementById("texto_" + i);
+
+        nome.innerText = conteudo_cantor[posAtual].nome;
+        texto.innerText = conteudo_cantor[posAtual].texto;
+        imagem.src = conteudo_cantor[posAtual].imagem;
+      }
+      posicao = (posicao + 1) % conteudo_cantor.length;
+    }
+
+    atualizarCards();
+    setInterval(atualizarCards, 5000);
+  </script>
+</body>
+
+</html>

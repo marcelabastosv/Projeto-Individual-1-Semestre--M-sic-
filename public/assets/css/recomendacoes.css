@@ -109,12 +109,15 @@ body {
 
 .perfil_caixa .inf_caixa {
   font-size: 0.8em;
-  height: 40px;
+  height: 30px;
   font-weight: 500;
   border: 2px solid black;
   box-shadow: 6px 6px 0px #222;
   margin-bottom: 12px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .perfil_caixa .li_caixa a {
@@ -226,25 +229,65 @@ body {
   font-size: 4em;
     color: white;
 }
-
-.cards_recom{
-  padding: 60px 0 ;
+.cards_recom {
+  padding: 60px 0;
   width: 100%;
   text-align: center;
+  background-color: #000000;
 }
 
 .container_recom {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  width: 85%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: stretch;
 }
+
+.publicacao {
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 35px;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.publicacao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.publicacao-dthr {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  font-size: 0.9em;
+  color: #3f3f3f;
+}
+
+.publicacao-nome {
+  display: block;
+  margin: 10px 0;
+  font-size: 1.4rem;
+}
+.publicacao-musica,
+.publicacao-cantor,
+.publicacao-descricao {
+  display: block;
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+
 
 .form_recom{
   background-color: white;
   width: 30%;
   margin: auto;
-  height: 70%;
+  height: 80%;
 }
 
 form{
@@ -326,21 +369,6 @@ form{
   color: #ccc;
 }
 
-.btn_vm {
-  background-color: #fff;
-  border: none;
-  padding: 15px 20px;
-  font-size: 1.3em;
-  box-shadow: 8px 8px 0px #4c4c4c;
-  transition: all 0.3s ease;
-}
-
-.btn_vm:hover {
-  padding: 14px 18px;
-  box-shadow: none;
-  transform: scale(0.95);
-}
-
 .banner {
   background-color: rgb(255, 255, 255);
   padding: 20px 0;
@@ -408,3 +436,7 @@ footer {
   padding: 10px;
   color: white;
 }
+
+
+
+

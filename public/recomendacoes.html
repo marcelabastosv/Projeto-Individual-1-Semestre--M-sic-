@@ -21,12 +21,12 @@
                             <i class='bx bxs-user'></i> MEU PERFIL </a>
                         <div class="perfil_caixa">
                             <div class="inf_caixa">
-                                <p>Marcela Bastos</p>
+                               <span id="b_usuario"></span>
                             </div>
                             <div class="li_caixa">
                                 <a href="inicioUser.html">Página Inicial</a>
-                                <a href=".html">Minha Dashboard</a>
-                                <a href=".html">Recomendações</a>
+                                <a href="dashboard.html">Minha Dashboard</a>
+                                <a href="recomendacoes.html">Recomendações</a>
                                 <a href="index.html">Sair</a>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                     <input type="text" placeholder="Música"  id="nMusica">
                     <input type="text" placeholder="Cantor / Banda" id="nCantor">
                     <textarea placeholder="Por que recomendo essa música..."  maxlength="250" rows="5" id="descricao"></textarea>
-                    <button class="btn_form" type="submit">ENVIAR</button>
+                    <button class="btn_form" type="submit"  >ENVIAR</button>
                 </div>
             </form>
         </div>
@@ -74,8 +74,9 @@
         <h3>RECOMENDAÇÕES</h3>
         </section>
     <section class="cards_recom">
-        <div class="container_recom" id="recomendacoes"></div>
-        <button onclick="Mostrar()" class="btn_vm" id="btnVerMais_recom">VER MAIS</button>
+        <div class="container_recom" id="recomendacoes">
+            </div>
+        </div>
     </section>
 
         <footer>
@@ -92,18 +93,22 @@
     </footer>
 </body>
 <script>
-
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+      atualizarFeed()
+      setInterval(atualizarFeed, 2000);
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
 
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
+        console.log(idUsuario)
 
         var corpo = {
             musica: nMusica.value,
             cantor: nCantor.value,
-            descricao: descricao.value
+            descricao: descricao.value,
+            id: sessionStorage.getItem("ID_USUARIO")
         }
 
          fetch(`/avisos/publicar/${idUsuario}`, {
@@ -119,7 +124,6 @@
             if (resposta.ok) {
                 window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
                 limparFormulario();
-                finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -127,66 +131,83 @@
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
         });
 
         return false;
-
     }
+
 
     
-    function atualizarFeed() {
-        fetch("/avisos/listar").then(function (resposta) {
-            if (resposta.ok) {
-                if (resposta.status == 204) {
-                    var feed = document.getElementById("recomendacoes");
-                    var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
-                }
+   function atualizarFeed() {
+    console.log('Passando para atualização do feed')
 
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    var feed = document.getElementById("recomendacoes");
-                    feed.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-
-                        // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
-                        var spanNomeUsuario = document.createElement("span");
-                        var spanNomeMusica = document.createElement("span");
-                        var spanNomeCantor = document.createElement("span");
-                        var divDescricao = document.createElement("div");
-
-
-                        spanNomeUsuario.innerHTML = "Usuario: <b>" + publicacao.nome + "</b>";
-                        spanNomeMusica.innerHTML = "Musica: <b>" + publicacao.musica + "</b>";
-                        spanNomeCantor.innerHTML = "Cantor/Banda: <b>" + publicacao.cantor + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-
-                        divPublicacao.className = "publicacao";
-                        spanNomeUsuario.className = "publicacao-nome";
-                        spanNomeMusica.className = "publicacao-musica";
-                        spanNomeCantor.className = "publicacao-cantor";
-                        divDescricao.className = "publicacao-descricao";
-
-                        divPublicacao.appendChild(spanNomeUsuario);
-                        divPublicacao.appendChild(spanNomeMusica);
-                        divPublicacao.appendChild(spanNomeCantor);
-                    }
-
-                    finalizarAguardar();
-                });
-            } else {
-                throw ('Houve um erro na API!');
+    fetch("/avisos/listar").then(function (resposta) {
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                var feed = document.getElementById("recomendacoes");
+                var mensagem = document.createElement("span");
+                mensagem.innerHTML = "Nenhum resultado encontrado."
+                feed.appendChild(mensagem);
+                throw "Nenhum resultado encontrado!!";
             }
-        }).catch(function (resposta) {
-            console.error(resposta);
-            finalizarAguardar();
-        });
-    }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                var feed = document.getElementById("recomendacoes");
+                feed.innerHTML = "";
+
+                for (let i = 0; i < resposta.length; i++) {
+                    var publicacao = resposta[i];
+
+                    // criando e manipulando elementos do HTML via JavaScript
+                    var divPublicacao = document.createElement("div");
+                    var spanNomeUsuario = document.createElement("span");
+                    var spanDtHr = document.createElement("span");
+                    var spanNomeMusica = document.createElement("span");
+                    var spanNomeCantor = document.createElement("span");
+                    var divDescricao = document.createElement("div");
+
+                    // Formatando data e hora para pt-BR
+                    var dataOriginal = new Date(publicacao.dtHora);
+                    var dataFormatada = dataOriginal.toLocaleString("pt-BR", {
+                        timeZone: "America/Sao_Paulo",
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }).replace(",", " às");
+
+                    spanDtHr.innerHTML = `<b>${dataFormatada}</b>`;
+                     spanNomeUsuario.innerHTML = " <b>" + publicacao.NomeUsuario + "</b>";
+                    spanNomeMusica.innerHTML = "<p><b>Música: </b>" + publicacao.NomeMusica + "</p>";
+                    spanNomeCantor.innerHTML = "<p><b>Cantor/Banda: </b>" + publicacao.Cantor + "</p>";
+                    divDescricao.innerHTML = " <p>" + publicacao.Descricao + "</p>";
+
+                    divPublicacao.className = "publicacao";
+                    spanNomeUsuario.className = "publicacao-nome";
+                    spanDtHr.className = "publicacao-dthr";
+                    spanNomeMusica.className = "publicacao-musica";
+                    spanNomeCantor.className = "publicacao-cantor";
+                    divDescricao.className = "publicacao-descricao";
+
+                    divPublicacao.appendChild(spanDtHr);
+                    divPublicacao.appendChild(spanNomeUsuario);
+                    divPublicacao.appendChild(spanNomeMusica);
+                    divPublicacao.appendChild(spanNomeCantor);
+                    divPublicacao.appendChild(divDescricao);
+
+                    feed.appendChild(divPublicacao);
+                }
+            });
+        } else {
+            throw ('Houve um erro na API!');
+        }
+    }).catch(function (resposta) {
+        console.error(resposta);
+    });
+}
+
 </script>
 </html>
