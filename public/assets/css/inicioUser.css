@@ -206,7 +206,7 @@ section {
 }
 
 .estilos_conteudo #reb:hover{
-    color: #7b2525;
+    color: #D43535;
 }
 
 .video_inicio {
@@ -568,7 +568,6 @@ footer {
   bottom: 0;
   width: 100%;
   left: 0;
-  color: var(--cor_branco);
   padding: 20px 0;
   text-align: center;
 }

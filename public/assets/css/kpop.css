@@ -24,7 +24,7 @@ section {
   padding: 20px 5%;
   display: flex;
   align-items: center;
-  background-color: #d35400cc;
+  background-color: #cb00bdb7;
   backdrop-filter: blur(10px);
   z-index: 4;
   top: 0;
@@ -69,7 +69,7 @@ section {
 }
 
 .menu_nav .l_btn {
-  color: #d35400;
+  color: #cb00bc;
   background-color: white;
   padding: 6px 10px;
   transition: all 0.1s ease-in-out;
@@ -142,7 +142,7 @@ section {
   width: 100%;
   padding: 10px 20px;
   background-color: #fffffffd;
-  color: #d35400;
+  color: #cb00bc;
   display: flex;
   align-items: center;
   z-index: 3;
@@ -188,7 +188,7 @@ section {
 }
 
 .estilos_conteudo a {
-  color: #d35400;
+  color: #cb00bc;
   margin-right: 20px;
 }
 
@@ -214,8 +214,8 @@ section {
 
 .inicio_estilo {
   display: flex;
-  background: #d35400;
-  background: linear-gradient(90deg, rgba(191, 76, 0, 1) 30%, rgba(255, 139, 63, 1) 100%);
+  background: #cb00bc;
+background: linear-gradient(90deg,rgba(203, 0, 188, 1) 30%, rgba(105, 2, 97, 1) 100%);
   height: 86vh;
   align-items: center;
   justify-content: center;
@@ -234,7 +234,7 @@ section {
 
 .conteudo_estilo h2 {
   margin-top: 6rem;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.245);
   padding: 20px 40px;
   margin-bottom: 20px;
   font-size: 5em;
@@ -274,7 +274,7 @@ section {
 .historia_estilo {
   width: 100%;
   height: auto;
-  padding: 40px;
+    padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -285,20 +285,20 @@ section {
   display: inline-block;
   position: relative;
   background: white;
-  color: #d35400;
+  color: #cb00bc;
   padding: 10px 25px;
-  border: 1px solid #b84900;
+  border: 1px solid #690261;
   font-weight: bold;
   font-size: 1.5em;
   text-align: center;
-  box-shadow: 8px 8px 0px #b84900;
+  box-shadow: 8px 8px 0px #690261;
 }
 
 .conteudo_historia {
   margin-top: 2em;
   width: 60%;
   line-height: 30px;
-  background-color: #d35400eb;
+  background-color: #cb00bdcc;
   padding: 60px 50px;
   color: #ffffff;
   text-align: justify;
@@ -311,20 +311,20 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #d35400cc;
+  background-color: #cb00bdcc;
 }
 
 .cantores_estilo h2 {
   display: inline-block;
   position: relative;
   background: white;
-  color: #d35400;
+  color: #cb00bc;
   padding: 10px 25px;
-  border: 1px solid #b84900;
+  border: 1px solid #cb00bc;
   font-weight: bold;
   font-size: 1.5em;
   text-align: center;
-  box-shadow: 8px 8px 0px #b84900;
+  box-shadow: 8px 8px 0px #690261;
 }
 
 .cards_cantor {
@@ -356,7 +356,7 @@ section {
   width: 100%;
   background: white;
   transition: height 0.5s ease;
-  padding: 30px;
+  padding: 40px;
 }
 
 .textoCantor{
@@ -395,7 +395,7 @@ section {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background: linear-gradient(90deg, rgba(191, 76, 0, 1) 30%, rgba(255, 139, 63, 1) 100%);
+background: linear-gradient(90deg,rgba(203, 0, 188, 1) 30%, rgba(105, 2, 97, 1) 100%);
   transition: opacity 0.3s ease;
 }
 
@@ -423,13 +423,13 @@ section {
   display: inline-block;
   position: relative;
   background: white;
-  color: #d35400;
+  color: #cb00bc;
   padding: 10px 25px;
-  border: 1px solid #b84900;
+  border: 1px solid #690261;
   font-weight: bold;
   font-size: 1.5em;
   text-align: center;
-  box-shadow: 8px 8px 0px #b84900;
+  box-shadow: 8px 8px 0px #690261;
 }
 
 .container {
@@ -487,7 +487,7 @@ section {
       height: 18px;
       width: 18px;
       border-radius: 50%;
-      background: #d35400;
+      background: #cb00bc;
       margin: 0 6px;
       cursor: pointer;
       transition: all 0.4s ease;
@@ -498,7 +498,7 @@ section {
     #two:checked ~ .button .two {
       width: 40px;
       background: transparent;
-      border: 2px solid #d35400;
+      border: 2px solid #cb00bc;
       border-radius: 8px;
     }
 
@@ -516,12 +516,12 @@ footer {
   left: 0;
   padding: 20px 0;
   text-align: center;
-  background-color: #d35400d0;
+  background-color: #cb00bdcc;
 }
 
 .linha_rodape{
   width: 100%;
-  background-color: #d35400;
+  background-color: #cb00bc;
   height: 6%;
 }
 
@@ -541,7 +541,7 @@ footer {
 }
 
 .descricao_rodape p{
-    border-bottom: 4px solid #d35400;
+    border-bottom: 4px solid #cb00bc;
     width: 40%;
     margin: auto;
     color: white;
@@ -550,7 +550,7 @@ footer {
 }
 
 .final_rodape{
-  background-color: #d35400;
+  background-color: #cb00bc;
   width: 100%;
   padding: 10px;
   color: white;

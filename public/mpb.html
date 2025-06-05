@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Másic</title>
+  <link rel="stylesheet" href="assets/css/mpb.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="assets/img/icone_logo.ico" />
+</head>
+
+<body>
+  <header class="menu_header">
+    <img src="assets/img/logo_branca.png" alt="Logo de própria autoria" />
+    <nav class="menu_nav">
+      <ul>
+        <li><a class="l_interno" href="#inicio_li">INICIO</a></li>
+        <li><a class="l_interno" href="#hist_li">HISTÓRIA</a></li>
+        <li><a class="l_interno" href="#cantor_li">ARTISTAS</a></li>
+        <li><a class="l_interno" href="#mus_li">MUSICAS</a></li>
+        <li class="perfil_usuario">
+          <div class="perfil_btn">
+            <a class="l_btn">
+              <i class="bx bxs-user"></i> MEU PERFIL
+            </a>
+            <div class="perfil_caixa">
+              <div class="inf_caixa">
+                <span id="b_usuario"></span>
+              </div>
+              <div class="li_caixa">
+                <a href="inicioUser.html">Página Inicial</a>
+                <a href=".html">Minha Dashboard</a>
+                <a href=".html">Recomendações</a>
+                <a href="index.html">Sair</a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="divestilos_inicio">
+    <div class="estilos_hover">
+      <div class="estilos_frase">
+        <p>ESTILOS MUSICAIS</p>
+        <p class="estilos_simbolo"></p>
+      </div>
+      <div class="estilos_conteudo">
+        <a href="Pop.html" id="pop">POP</a>
+        <a href="K-POP.html" id="kpop">K-POP</a>
+        <a href="Reggae.html" id="reggae">REGGAE</a>
+        <a href="MPB.html" id="mpb">MPB</a>
+        <a href="R&B.html" id="reb">R&B</a>
+      </div>
+    </div>
+  </div>
+  <section class="inicio_estilo" id="inicio_li">
+    <div class="conteudo_estilo">
+      <h2>MPB</h2>
+      <p>
+      <blockquote>"K-pop em si não é apenas um gênero musical, mas um fenômeno cultural completo."</blockquote>
+      <cite>- Lee Tae-min</cite>
+      </p>
+    </div>
+
+    <div class="img_estilo">
+      <img src="assets/img/inicio_mpb.png" alt="Imagem Editada por prória autoria" />
+    </div>
+  </section>
+
+  <section class="historia_estilo" id="hist_li">
+    <h2>HISTÓRIA DO K-POP</h2>
+    <div class="conteudo_historia">
+      <p>O K-pop, abreviação de Korean Pop, é muito mais do que um gênero musical: é um fenômeno cultural global que
+        combina música, dança, moda e identidade visual com forte influência da cultura coreana. Sua trajetória é
+        marcada por inovação, disciplina e uma impressionante capacidade de se reinventar.</p>
+
+      <p>A origem do K-pop pode ser traçada até as décadas de 1950 e 1960, quando a música sul-coreana começou a
+        absorver elementos do jazz, rock e pop ocidental, trazidos principalmente por soldados norte-americanos durante
+        a Guerra da Coreia. Durante as décadas seguintes, estilos como o trot dominaram o cenário musical local.</p>
+
+      <p>O marco que define o início do K-pop moderno aconteceu em 1992, com a estreia do grupo Seo Taiji and Boys. Ao
+        incorporar rap, hip-hop, techno e letras que abordavam temas sociais, eles transformaram completamente a música
+        coreana, abrindo caminho para uma nova geração de artistas.</p>
+
+      <p>A partir de meados da década de 1990, surgiram as grandes agências de entretenimento como SM Entertainment, YG
+        Entertainment e JYP Entertainment, que implantaram o famoso sistema de trainees — jovens que passam anos sendo
+        treinados em canto, dança, atuação e idiomas antes de estrearem em grupos cuidadosamente planejados.</p>
+
+      <p>Nos anos 2000, o K-pop começou a se expandir para o restante da Ásia, com grupos como TVXQ, Super Junior,
+        BIGBANG e Girls’ Generation conquistando milhões de fãs em países como Japão, China e Tailândia. Em 2012, o
+        cantor PSY levou o gênero a um novo patamar com o hit viral “Gangnam Style”, que se tornou o primeiro vídeo do
+        YouTube a ultrapassar 1 bilhão de visualizações.</p>
+
+      <p>Desde então, o K-pop passou a dominar palcos internacionais, com grupos como BTS, BLACKPINK, EXO, TWICE e Stray
+        Kids liderando paradas musicais, lotando estádios ao redor do mundo e conquistando premiações internacionais,
+        como o Billboard Music Awards e até indicações ao Grammy.</p>
+
+      <p>Hoje, o K-pop é sinônimo de globalização musical, reunindo fãs de diferentes culturas e línguas. Seu impacto
+        ultrapassa fronteiras e inspira milhões de pessoas a se conectarem por meio da música, da dança e de uma
+        comunidade vibrante que cresce a cada dia.</p>
+
+    </div>
+  </section>
+
+  <section class="cantores_estilo" id="cantor_li">
+    <h2>ARTISTAS DO K-POP</h2>
+    <div class="cards_cantor">
+      <div class="card_cantor" id="card0">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome0"></div>
+          <div class="textoCantor" id="texto0"></div>
+        </div>
+        <div class="imgCt">
+          <img id="img0" src="" alt="" />
+        </div>
+      </div>
+
+      <div class="card_cantor" id="card1">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome1"></div>
+          <div class="textoCantor" id="texto1"></div>
+        </div>
+        <div class="imgCt">
+          <img id="img1" src="" alt="" />
+        </div>
+      </div>
+
+      <div class="card_cantor" id="card2">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome2"></div>
+          <div class="textoCantor" id="texto2"></div>
+        </div>
+        <div class="imgCt">
+          <img id="img2" src="" alt="" />
+        </div>
+      </div>
+
+      <div class="card_cantor" id="card3">
+        <div class="nomeCt">
+          <p>ESSE É</p>
+          <div class="nomeCantor" id="nome3"></div>
+          <div class="textoCantor" id="texto3"></div>
+        </div>
+        <div class="imgCt">
+          <img id="img3" src="" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="musicas_estilo" id="mus_li">
+    <h2>MUSICAS DO K-POP</h2>
+    <div class="container">
+      <input type="radio" name="dot" id="one" checked>
+      <input type="radio" name="dot" id="two">
+
+      <div class="main-card">
+
+        <div class="cards">
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6KE3Fs6LMzi4hJI3eFqyLC?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3Ua0m0YmEjrMi9XErKcNiR?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6rdkCkjk6D12xRpdMXy0I2?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5zTvf2B39VQM16eSiLmVGc?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
+
+
+        <div class="cards">
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5WjFTHBXtirpkDcG0pZYQH?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2uqzfXB7NlBnhQd04W7HaH?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4Aw8n6r2vuU0KUo1a2nftp?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+          <div class="card">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/26eV0R7nbqtlzh316ncU99?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="button">
+        <label for="one" class="one"></label>
+        <label for="two" class="two"></label>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="linha_rodape"> </div>
+    <div class="logo_rodape">
+      <img src="assets/img/logo_branca.png" alt="Logo de própria autoria">
+    </div>
+    <div class="descricao_rodape">
+      <p>WebSite desenvolvido por Marcela Bastos Vicente para fins acadêmicos.</p>
+    </div>
+    <div class="final_rodape">
+      <p>MÁSIC 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    var conteudo_cantor = [ 
+  {
+    nome: "BTS",
+    imagem: "assets/img/bts_kpop_cantores.png",
+    texto: "BTS é um grupo sul-coreano formado em 2013 pela BigHit. Conhecido por suas coreografias marcantes, letras fortes e engajamento social, tornou-se um dos maiores fenômenos do mundo."
+  },
+  {
+    nome: "NEW JEANS",
+    imagem: "assets/img/newjeans_kpop_cantores.png",
+    texto: "NewJeans é um grupo feminino sul-coreano lançado em 2022. Com visual retrô e som que mistura R&B e pop alternativo, conquistou o público com sua originalidade e estilo."
+  },
+  {
+    nome: "TWICE",
+    imagem: "assets/img/twice_kpop_cantores.png",
+    texto: "TWICE é um grupo feminino da JYP formado em 2015. Conhecido por seus refrões contagiantes e conceito alegre, é um dos grupos mais populares do K-pop atual."
+  },
+  {
+    nome: "GOT7",
+    imagem: "assets/img/got7_kpop_cantores.png",
+    texto: "GOT7 é um grupo masculino da JYP, lançado em 2014. Misturando K-pop com hip hop e R&B, se destacou por suas performances e talento multicultural."
+  },
+  {
+    nome: "MAMAMOO",
+    imagem: "assets/img/mamamoo_kpop_cantores.png",
+    texto: "Mamamoo é um grupo feminino famoso por seus vocais potentes e versatilidade. Estrearam em 2014 e são elogiadas por sua força e estilo único."
+  },
+  {
+    nome: "BIGBANG",
+    imagem: "assets/img/bigbang_kpop_cantores.png",
+    texto: "BIGBANG é um dos grupos mais marcantes do K-pop. Estreando em 2006, misturaram hip hop, eletrônico e R&B, marcando gerações de fãs."
+  },
+  {
+    nome: "RED VELVET",
+    imagem: "assets/img/redvelvet_kpop_cantores.png",
+    texto: "Red Velvet é um grupo feminino da SM conhecido por unir estilos 'red' (pop) e 'velvet' (R&B). Estrearam em 2014 com repertório versátil e criativo."
+  },
+  {
+    nome: "JAY PARK",
+    imagem: "assets/img/jayp_kpop_cantores.png",
+    texto: "Jay Park é cantor e produtor coreano-americano. Ex-2PM, se destacou solo e fundou gravadoras, impulsionando o hip hop coreano globalmente."
+  }
+];
+
+
+
+    var posicao = 0;
+
+    function atualizarCards() {
+      for (var i = 0; i < 4; i++) {
+        var posAtual = (posicao + i) % conteudo_cantor.length;
+        var nome = document.getElementById("nome" + i);
+        var imagem = document.getElementById("img" + i);
+        var texto = document.getElementById("texto" + i);
+
+        nome.innerText = conteudo_cantor[posAtual].nome;
+        texto.innerText = conteudo_cantor[posAtual].texto;
+        imagem.src = conteudo_cantor[posAtual].imagem;
+      }
+      posicao = (posicao + 1) % conteudo_cantor.length;
+    }
+
+    atualizarCards();
+    setInterval(atualizarCards, 3500);
+  </script>
+</body>
+
+</html>
