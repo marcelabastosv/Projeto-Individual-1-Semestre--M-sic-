@@ -52,7 +52,9 @@ function cadastrar(req, res) {
     .then(function (resultado) {
       
         res.json({
-            idUsuario: resultado.insertId
+            idUsuario: resultado.insertId,
+            nome: nome,
+            email: email
         });
     })
     .catch(function (erro) {

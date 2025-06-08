@@ -135,6 +135,8 @@
     })
     .then(function (json) {
         sessionStorage.ID_USUARIO = json.idUsuario;
+       sessionStorage.NOME_USUARIO = json.nome;   
+       sessionStorage.EMAIL_USUARIO = json.email;
         window.location = "quiz.html";
     })
     .catch(function (erro) {
