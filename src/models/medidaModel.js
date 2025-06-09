@@ -16,12 +16,12 @@ function buscarMedidasEmTempoReal() {
     return database.executar(instrucaoSql);
 }
 
-function buscarkpisDash(){
-        var instrucaoSql = `  SELECT 
+function buscarkpisDash(idUsuario){
+        var instrucaoSql = ` SELECT
     (SELECT COUNT(*) FROM Quiz_Resultado_Usuario) AS totalUsuarios,
     (SELECT Genero FROM Quiz_Resultado_Usuario GROUP BY Genero ORDER BY COUNT(*) ASC LIMIT 1) AS menorGenero,
     (SELECT Genero FROM Quiz_Resultado_Usuario GROUP BY Genero ORDER BY COUNT(*) DESC LIMIT 1) AS maiorGenero,
-	(SELECT Genero FROM Quiz_Resultado_Usuario JOIN Usuario ON fkUsuario = idUsuario LIMIT 1) AS generoUsuario;;`
+    (SELECT Genero FROM Quiz_Resultado_Usuario WHERE fkUsuario = ${idUsuario} LIMIT 1) AS generoUsuario;`
     
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

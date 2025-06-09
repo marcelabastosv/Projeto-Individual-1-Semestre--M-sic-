@@ -11,7 +11,7 @@ router.get("/tempo-real/:idResultado_Usuario", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
-router.get("/kpis", function (req, res) {
+router.get("/kpis/:idUsuario", function (req, res) {
     medidaController.buscarkpisDash(req, res);
 })
 

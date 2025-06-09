@@ -85,7 +85,7 @@
 
 </html>
 <script>
-
+     var idUsuario = sessionStorage.ID_USUARIO;
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     window.onload = () => {obterDadosGrafico(), buscarkpisDash()}
@@ -186,7 +186,8 @@
       }
 
     function buscarkpisDash() {
-    fetch(`/medidas/kpis`, { cache: "no-store" })
+
+    fetch(`/medidas/kpis/${idUsuario}`, { cache: "no-store" })
         .then(res => {
             if (res.ok) return res.json();
         })
